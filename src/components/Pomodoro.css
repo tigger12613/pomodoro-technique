@@ -1,0 +1,14 @@
+.timer text {
+    font-size: 60px;
+}
+
+.start-stop-btn Button {}
+
+.pomodoro {
+    width: 100%;
+    height: 100%;
+}
+
+.bigbox {
+    margin-top: 20%;
+}
