@@ -102,7 +102,7 @@ export function Pomodoro(props: IPomodoroProps) {
     const playAudio = (audio:HTMLAudioElement,volumn:number, ms:number) => {
         return new Promise((resolve, reject) => {
             if (audio && ms) {
-                audio.loop = true
+                audio.loop = false
                 audio.play()
                 setTimeout(() => {
                     audio.loop = false
@@ -202,13 +202,17 @@ export function Pomodoro(props: IPomodoroProps) {
         sms.volume = volume/100
         // sms.play()
     },[volume])
+    const leadingZero = (code :number, dataLength : number) =>{
+        var str = '0000000000' + code;
+        return str.slice(0 - dataLength);
+    }
 
     return (
         <div className='pomodoro' style={{ "backgroundColor": getbackgroundColor() }}>
             <Container>
                 <div className='bigbox'>
                     <div className='timer'>
-                        <text>{Math.floor(lessTime / 1000 / 60)}</text><text>:</text><text>{Math.floor(lessTime / 1000 % 60)}</text>
+                        <text>{Math.floor(lessTime / 1000 / 60)}</text><text>:</text><text>{leadingZero(Math.floor(lessTime / 1000 % 60),2)}</text>
                         <br />
                         {/* <text>{lessTime}</text> */}
 
